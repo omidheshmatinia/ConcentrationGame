@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="130dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<eu.davidea.flipview.FlipView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    app:checked="false"
+    app:enableInitialAnimation="false"
+    app:frontLayout="@layout/flipview_front"
+    app:rearLayout="@layout/flipview_rear"
+    app:frontBackgroundColor="#00000000"
+    app:rearBackgroundColor="#00000000"
+    app:rearImageAnimationDelay="0"/>
+</FrameLayout>

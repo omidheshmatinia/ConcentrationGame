@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Concentration Game</string>
+    <string name="textview_game_score">Score :</string>
+    <string name="textview_game_time">time :</string>
+    <string name="error_webservice_connection">Error in connection</string>
+    <string name="error_webservice_data">Error in sent data</string>
+    <string name="error_webservice_unknown">Unknown problem happened</string>
+    <string name="error_webservice_parsing">Error in parsing server response</string>
+</resources>
