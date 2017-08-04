@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="130dp"
+    android:layout_width="@dimen/width_cards"
+    android:layout_height="@dimen/height_cards"
+    android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <eu.davidea.flipview.FlipView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
+    android:layout_gravity="center"
+    android:id="@+id/flipview_item_card"
+    android:clickable="false"
     app:checked="false"
     app:enableInitialAnimation="false"
     app:frontLayout="@layout/flipview_front"

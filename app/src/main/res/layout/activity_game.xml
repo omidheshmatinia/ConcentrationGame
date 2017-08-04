@@ -1,18 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#e6e6e6"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/recyclerview_game_board"
-      >
-    </android.support.v7.widget.RecyclerView>
+        android:layout_weight="1">
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:id="@+id/recyclerview_game_board"
+                />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/view_game_wrong_choose"
+            android:background="#60f44336"
+            android:visibility="gone"
+            />
+        <omidheshmatinia.github.com.concentrationgame.customview.CircularReveal.CircularRevealView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/circularview_game"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/view_game_final_score"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/icon_achievment"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edittext_game_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Please Enter Your Name"
+                android:inputType="textPassword"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                app:met_floatingLabelText="Name"
+                android:gravity="center"
+                app:met_textColorHint="@color/white"
+                app:met_hideUnderline="false"
+                />
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Submit"
+                android:id="@+id/button_game_submit"/>
+        </LinearLayout>
+    </FrameLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,52 +77,11 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="0dp"
+            <Chronometer
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/textview_game_score"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="start|center"
-                    android:id="@+id/textview_game_score"
-                    android:layout_weight="1"
-                    android:padding="4dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/textview_game_time"
-                    android:gravity="center"
-                    android:padding="4dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="start|center"
-                    android:id="@+id/textview_game_time"
-                    android:layout_weight="1"
-                    android:padding="4dp"/>
-            </LinearLayout>
+                android:gravity="center"
+                android:id="@+id/chronometer_game"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

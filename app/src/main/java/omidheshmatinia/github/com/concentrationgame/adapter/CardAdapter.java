@@ -13,6 +13,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.davidea.flipview.FlipView;
 import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
 import omidheshmatinia.github.com.concentrationgame.utils.ColorHelper;
@@ -43,9 +44,20 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ItemHolder>{
         holder.cardNumber.setText(String.valueOf(position+1));
         holder.cardView.setBackgroundColor(ColorHelper.getInstance().getColorFromList(position));
         ImageLoader.getInstance().displayImage(item.getImageUrl(),holder.image);
+
         if(mListener!=null){
             holder.wrapper.setTag(item);
             holder.wrapper.setOnClickListener(mListener);
+        }
+    }
+
+    @Override
+    public void onViewAttachedToWindow(ItemHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        int position = holder.getAdapterPosition();
+        PictureCard card = items.get(position);
+        if(!card.isRevealed()){
+            holder.flipView.flipSilently(false);
         }
     }
 
@@ -54,17 +66,20 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ItemHolder>{
         return items.size();
     }
 
+
     class ItemHolder extends RecyclerView.ViewHolder {
 
         TextView cardNumber;
         CardView cardView;
         ImageView image;
+        FlipView flipView;
         View wrapper;
         ItemHolder(View itemView) {
             super(itemView);
             cardNumber = itemView.findViewById(R.id.textview_item_card_number);
             cardView =  itemView.findViewById(R.id.cardview_item_card);
             image =  itemView.findViewById(R.id.imageview_item_card_picture);
+            flipView =  itemView.findViewById(R.id.flipview_item_card);
             wrapper = itemView;
         }
     }
