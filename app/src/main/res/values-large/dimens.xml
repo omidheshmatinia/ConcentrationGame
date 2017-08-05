@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_cards">140dp</dimen>
+    <dimen name="height_cards">182dp</dimen>
+    <dimen name="grid_spacing">10dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="size_image_achievement">130dp</dimen>
+    <dimen name="size_image_concentration">200dp</dimen>
+</resources>
