@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="2dp"
+    app:cardElevation="3dp"
     app:cardCornerRadius="4dp"
-    android:layout_margin="4dp"
+    android:layout_margin="6dp"
     >
 
     <LinearLayout
@@ -17,6 +17,8 @@
             android:id="@+id/textview_item_score_history_row"
             android:layout_width="wrap_content"
             android:minWidth="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_height="match_parent"
             android:gravity="center|start"
             android:padding="4dp"

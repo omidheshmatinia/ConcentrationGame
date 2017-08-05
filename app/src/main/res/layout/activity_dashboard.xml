@@ -38,17 +38,17 @@
         <android.support.v7.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="@dimen/font_medium"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:text="Start Playing"
+            app:theme="@style/CustomButtonDashboard"
             android:id="@+id/button_dashboard_game"/>
         <android.support.v7.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="@dimen/font_medium"
+            app:theme="@style/CustomButtonDashboard"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="4dp"
@@ -62,6 +62,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
+            app:theme="@style/CustomButtonDashboard"
             android:textSize="@dimen/font_medium"
             android:text="Setting"
             android:id="@+id/button_dashboard_setting"/>

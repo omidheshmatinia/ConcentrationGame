@@ -87,6 +87,13 @@ public class GameActivity extends MasterActivity implements GameContract.View {
     }
 
     @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        Log.i("TestDetach","Are");
+        mPresenter.viewDetached();
+    }
+
+    @Override
     public void flipCard(int position) {
         View view = mCardList.getLayoutManager().findViewByPosition(position);
         if(view!=null){

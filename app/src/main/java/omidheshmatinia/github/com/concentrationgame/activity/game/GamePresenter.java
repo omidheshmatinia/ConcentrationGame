@@ -28,6 +28,11 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
     }
 
     @Override
+    public void viewDetached() {
+        mView = null ;
+    }
+
+    @Override
     public void listCardItemClicked(final PictureCard item) {
         if(mView!=null){
             if(mModel.isWrongAnimationRunning()){
@@ -124,7 +129,10 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
 
     @Override
     public void searchWebApiErrorHappened(String error) {
-        mView.toast(error, Toast.LENGTH_LONG);
+        if(mView!=null) {
+            mView.toast(error, Toast.LENGTH_LONG);
+            mView.finishActivity();
+        }
     }
 
 }

@@ -46,11 +46,11 @@
                 <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinner_setting_difficulty"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
                     android:layout_gravity="center"
-                    android:layout_height="48dp"
                     android:layout_weight="1" />
 
             </LinearLayout>
@@ -98,6 +98,7 @@
                     android:layout_marginLeft="16dp"
                     app:met_floatingLabelText="Name"
                     android:gravity="center"
+                    android:textSize="@dimen/font_medium"
                     app:met_textColorHint="@color/white"
                     app:met_hideUnderline="false"
                     />
@@ -107,7 +108,7 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:textSize="@dimen/font_medium"
+                app:theme="@style/CustomButtonDashboard"
                 android:text="Save"
                 android:layout_marginTop="8dp"
                 android:id="@+id/button_setting_save"/>

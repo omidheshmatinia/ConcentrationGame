@@ -47,7 +47,7 @@ public class SettingActivity extends MasterActivity implements SettingContract.V
 
     @Override
     public void initSpinner(List<PublicEnums.Difficulty> types,PublicEnums.Difficulty currentDifficulty) {
-        spinnerDifficulty.setAdapter(new ArrayAdapter(getActivityContext(),android.R.layout.simple_spinner_item,types));
+        spinnerDifficulty.setAdapter(new ArrayAdapter(getActivityContext(),R.layout.item_spinner,types));
         int index = types.indexOf(currentDifficulty);
         spinnerDifficulty.setSelection(index);
     }

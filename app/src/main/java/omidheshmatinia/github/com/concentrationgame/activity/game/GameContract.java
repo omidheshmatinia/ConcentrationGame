@@ -70,6 +70,11 @@ class GameContract {
         void viewCreated();
 
         /**
+         * inform about detaching of view.
+         */
+        void viewDetached();
+
+        /**
          * called when user click on a card
          * @param item
          */
