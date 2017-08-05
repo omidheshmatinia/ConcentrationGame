@@ -15,42 +15,29 @@ import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 class GameContract {
 
     interface View extends MasterActivityViewInterface{
-
         void initList(List<PictureCard> items, int columnSize);
-
         void flipCard(int position);
         void changeWrongViewVisibility(int visibility);
-
         void animateWrongView();
-
         void changeChronometerStatus(boolean start);
-
-        void initChronometer();
-
         void showSubmitView();
         String getName();
+        void setBeginTimeOFChronometer(long beginTime);
+        void changeProgressbarVisibility(int visibility);
     }
 
     interface Presenter{
-
         void viewCreated();
-
         void onPause();
-
         void onResume();
-
         void viewDetached();
-        void oneSecondPassed();
         void listCardItemClicked(PictureCard item);
-
         void submitRecordClicked();
     }
 
     interface Model{
         PublicEnums.Difficulty getDifficulty();
-        void setDifficulty(PublicEnums.Difficulty difficulty);
         int getSuccessfulPairs();
-        int getTime();
         void addOneToSuccessfulPairs();
         void getPicturesFromApi(PublicEnums.Difficulty difficulty,String term);
         String getSearchTermFromSharedPreference();
@@ -60,9 +47,11 @@ class GameContract {
         PictureCard getChosenCard();
         boolean isWrongAnimationRunning();
         void setWrongAnimationIsRunning(boolean isRunning);
-        void addOneSecondToTime();
         void saveHistoryItemInDb(ScoreHistory history);
         ScoreHistory getLastHistoryData();
+        void updateHistoryData(ScoreHistory historyData);
+        void resetBeginTime();
+        long getBeginTime();
     }
 
     interface ModelPresenter{

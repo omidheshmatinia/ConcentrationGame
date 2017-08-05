@@ -1,5 +1,8 @@
 package omidheshmatinia.github.com.concentrationgame.activity.game;
 
+import android.os.SystemClock;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +11,7 @@ import omidheshmatinia.github.com.concentrationgame.connection.SearchPictureConn
 import omidheshmatinia.github.com.concentrationgame.interfaces.webapi.WebApiSearchPictureResponseInterface;
 import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
+import omidheshmatinia.github.com.concentrationgame.repository.ScoreHistoryRepository;
 import omidheshmatinia.github.com.concentrationgame.utils.PreferenceHelper;
 
 /**
@@ -16,32 +20,24 @@ import omidheshmatinia.github.com.concentrationgame.utils.PreferenceHelper;
 
 class GameModel implements GameContract.Model {
     private GameContract.ModelPresenter mModelPresenter;
-    private PublicEnums.Difficulty mDifficulty = PublicEnums.Difficulty.Easy;
     private int mSuccessfulPairs;
-    private int mTime;
     private PictureCard mFirstChosenCard;
     private List<PictureCard> mCardList = new ArrayList<>();
     private Boolean isShowingWrongAnimation = false;
+    private long mBeginTime;
 
     GameModel(GameContract.ModelPresenter modelPresenter) {
         this.mModelPresenter = modelPresenter;
     }
 
     public PublicEnums.Difficulty getDifficulty() {
-        return mDifficulty;
-    }
-
-    public void setDifficulty(PublicEnums.Difficulty mDifficulty) {
-        this.mDifficulty = mDifficulty;
+        return PublicEnums.Difficulty.getDifficultyByType(PreferenceHelper.getInstance().getDifficultyLevel());
     }
 
     public int getSuccessfulPairs() {
         return mSuccessfulPairs;
     }
 
-    public int getTime() {
-        return mTime;
-    }
 
     public void addOneToSuccessfulPairs() {
         this.mSuccessfulPairs++;
@@ -100,18 +96,27 @@ class GameModel implements GameContract.Model {
     }
 
     @Override
-    public void addOneSecondToTime() {
-        mTime++;
-    }
-
-    @Override
     public void saveHistoryItemInDb(ScoreHistory history) {
-        //todo
+        ScoreHistoryRepository.getInstance().createHistoryItem(history);
     }
 
     @Override
     public ScoreHistory getLastHistoryData() {
-        //todo
-        return null;
+        return  ScoreHistoryRepository.getInstance().getLastItem();
+    }
+
+    @Override
+    public void updateHistoryData(ScoreHistory historyData) {
+        ScoreHistoryRepository.getInstance().updateHistoryItem(historyData);
+    }
+
+    @Override
+    public void resetBeginTime() {
+        mBeginTime = SystemClock.elapsedRealtime();
+    }
+
+    @Override
+    public long getBeginTime() {
+        return mBeginTime;
     }
 }

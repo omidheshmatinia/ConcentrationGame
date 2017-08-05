@@ -6,9 +6,30 @@
     android:layout_height="match_parent"
     tools:context="omidheshmatinia.github.com.concentrationgame.activity.dashboard.DashboardActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="@dimen/font_medium"
+            android:text="Start Playing"
+            android:id="@+id/button_dashboard_game"/>
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="@dimen/font_medium"
+            android:text="HighScores"
+            android:id="@+id/button_dashboard_high_scores"/>
+        <android.support.v7.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="@dimen/font_medium"
+            android:text="Setting"
+            android:id="@+id/button_dashboard_setting"/>
+    </LinearLayout>
 
 </FrameLayout>

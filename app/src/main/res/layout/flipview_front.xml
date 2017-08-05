@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         app:cardElevation="3dp"
+        app:cardCornerRadius="5dp"
         android:layout_gravity="center"
         android:id="@+id/cardview_item_card">
         <TextView

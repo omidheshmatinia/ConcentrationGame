@@ -10,4 +10,5 @@ import java.util.Objects;
 
 public interface MasterActivityViewInterface {
     void toast(Object item,int length);
+    void finishActivity();
 }

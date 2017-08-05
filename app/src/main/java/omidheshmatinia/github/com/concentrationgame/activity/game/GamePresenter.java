@@ -1,18 +1,14 @@
 package omidheshmatinia.github.com.concentrationgame.activity.game;
 
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
-import android.widget.ViewAnimator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import eu.davidea.flipview.FlipView;
-import omidheshmatinia.github.com.concentrationgame.base.MasterApplication;
 import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 
@@ -82,10 +78,10 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
                     mModel.setFirstChosenCard(null);
                     if(mModel.getSuccessfulPairs() == mModel.getDifficulty().getCardNumber()){
                         mView.changeChronometerStatus(false);
-                        ScoreHistory history= new ScoreHistory("UNKNOWN",mModel.getTime(),mModel.getDifficulty().getType(),System.currentTimeMillis());
+                        long timeElapsed = SystemClock.elapsedRealtime() - mModel.getBeginTime();
+                        ScoreHistory history= new ScoreHistory("UNKNOWN",timeElapsed,mModel.getDifficulty().getType(),System.currentTimeMillis());
                         mModel.saveHistoryItemInDb(history);
                         mView.showSubmitView();
-                        //todo game finished calculate Score
                     }
                 } else {
                     mModel.setWrongAnimationIsRunning(true);
@@ -109,6 +105,9 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
             }
         }
     }
+    private int convertMilliToSecond(long milli){
+        return (int)(milli/1000);
+    }
 
     @Override
     public void submitRecordClicked() {
@@ -116,7 +115,8 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
             String name = mView.getName();
             ScoreHistory historyData= mModel.getLastHistoryData();
             historyData.setUserName(name);
-            mModel.saveHistoryItemInDb(historyData);
+            mModel.updateHistoryData(historyData);
+            mView.finishActivity();
         }
     }
 
@@ -144,8 +144,10 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
             mModel.setCardList(items);
             mView.initList(items,mModel.getDifficulty().getColumnSize());
 
-            mView.initChronometer();
+            mModel.resetBeginTime();
+            mView.setBeginTimeOFChronometer(SystemClock.elapsedRealtime());
             mView.changeChronometerStatus(true);
+            mView.changeProgressbarVisibility(View.GONE);
         }
     }
 
@@ -153,10 +155,5 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
     public void searchWebApiErrorHappened(String error) {
         mView.toast(error, Toast.LENGTH_LONG);
     }
-    @Override
-    public void oneSecondPassed() {
-        mModel.addOneSecondToTime();
-    }
-
 
 }

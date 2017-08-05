@@ -3,6 +3,7 @@ package omidheshmatinia.github.com.concentrationgame.utils;
 import android.app.Application;
 import android.content.SharedPreferences;
 
+import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.base.MasterApplication;
 
 /**
@@ -14,13 +15,7 @@ public class PreferenceHelper {
 
     private class Parameters{
         private final static String SEARCH_TERM = "searchTerm";
-    }
-    public String getSearchTerm() {
-        return mSharedPreferences.getString(Parameters.SEARCH_TERM,"kitten");
-    }
-
-    public void setSearchTerm(String term){
-        mSharedPreferences.edit().putString(Parameters.SEARCH_TERM,term).commit();
+        private final static String DIFFICULTY_LEVEL = "difficultyLevel";
     }
 
     private final static class Instance {
@@ -36,4 +31,20 @@ public class PreferenceHelper {
     }
 
 
+    public String getSearchTerm() {
+        return mSharedPreferences.getString(Parameters.SEARCH_TERM,"kitten");
+    }
+
+    public void setSearchTerm(String term){
+        mSharedPreferences.edit().putString(Parameters.SEARCH_TERM,term).commit();
+    }
+
+
+    public int getDifficultyLevel() {
+        return mSharedPreferences.getInt(Parameters.DIFFICULTY_LEVEL, PublicEnums.Difficulty.Easy.getType());
+    }
+
+    public void setDifficultyLevel(int type){
+        mSharedPreferences.edit().putInt(Parameters.DIFFICULTY_LEVEL,type).commit();
+    }
 }

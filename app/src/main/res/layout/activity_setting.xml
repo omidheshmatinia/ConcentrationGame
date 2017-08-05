@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#e6e6e6">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center|start"
+                    android:minWidth="100dp"
+                    android:padding="4dp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="DifficultyLevel"
+                    android:textSize="@dimen/font_medium" />
+
+                <android.support.v7.widget.AppCompatSpinner
+                    android:id="@+id/spinner_setting_difficulty"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_height="48dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#fff"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:gravity="center|start"
+                    android:minWidth="100dp"
+                    android:padding="4dp"
+                    android:text="SearchTerm"
+                    android:textSize="@dimen/font_medium" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center|start"
+                    android:minWidth="100dp"
+                    android:padding="4dp"
+                    android:text="The cards image are taken from 500Px Apis. You can change the image by changing the searchTerm"
+                    android:textSize="@dimen/font_small" />
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edittext_setting_search_term"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Define your desired search term"
+                    android:inputType="textPersonName"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    app:met_floatingLabelText="Name"
+                    android:gravity="center"
+                    app:met_textColorHint="@color/white"
+                    app:met_hideUnderline="false"
+                    />
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textSize="@dimen/font_medium"
+                android:text="Save"
+                android:layout_marginTop="8dp"
+                android:id="@+id/button_setting_save"/>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

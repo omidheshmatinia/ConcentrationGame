@@ -10,12 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:id="@+id/recyclerview_game_board"
-                />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/recyclerview_game_board"
+            />
+        <ProgressBar
+            android:layout_width="@dimen/size_image_achievement"
+            android:layout_height="@dimen/size_image_achievement"
+            android:indeterminate="true"
+            android:layout_gravity="center"
+            android:id="@+id/progressbar_game"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -45,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Please Enter Your Name"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 app:met_floatingLabelText="Name"

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -15,6 +16,7 @@ import android.view.animation.Animation;
 import android.widget.Chronometer;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -51,15 +53,8 @@ public class GameActivity extends MasterActivity implements GameContract.View {
     View viewFinalScore;
     @BindView(R.id.edittext_game_name)
     MaterialEditText editTextName;
-
-
-    public static void start(Context context) {
-//        Intent starter = new Intent(context, GameActivity.class);
-//        starter.putExtra();
-//        context.startActivity(starter);
-//        //todo
-    }
-
+    @BindView(R.id.progressbar_game)
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,16 +135,6 @@ public class GameActivity extends MasterActivity implements GameContract.View {
     }
 
     @Override
-    public void initChronometer() {
-        mChronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-            @Override
-            public void onChronometerTick(Chronometer chronometer) {
-                mPresenter.oneSecondPassed();
-            }
-        });
-    }
-
-    @Override
     public void showSubmitView() {
         int screenWidth = ScreenHelper.getScreenWidth(this);
         int screenHeight = ScreenHelper.getScreenHeight(this);
@@ -182,6 +167,16 @@ public class GameActivity extends MasterActivity implements GameContract.View {
     @Override
     public String getName() {
         return editTextName.getText().toString();
+    }
+
+    @Override
+    public void setBeginTimeOFChronometer(long beginTime) {
+        mChronometer.setBase(beginTime);
+    }
+
+    @Override
+    public void changeProgressbarVisibility(int visibility) {
+        progressBar.setVisibility(visibility);
     }
 
     @OnClick({R.id.button_game_submit})
