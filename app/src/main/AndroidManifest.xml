@@ -21,7 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.game.GameActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:label=""
+            android:name=".activity.game.GameActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".activity.dashboard.DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.dashboard.DashboardActivity" />
+        </activity>
         <activity
             android:label=""
             android:name=".activity.highscores.HighScoreActivity"
@@ -36,6 +44,7 @@
         <activity
             android:label=""
             android:name=".activity.setting.SettingActivity"
+            android:windowSoftInputMode="stateHidden"
             android:parentActivityName=".activity.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             >

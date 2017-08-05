@@ -33,7 +33,16 @@
                     android:layout_marginRight="16dp"
                     android:text="DifficultyLevel"
                     android:textSize="@dimen/font_medium" />
-
+                <TextView
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center|start"
+                    android:minWidth="100dp"
+                    android:padding="4dp"
+                    android:text="The game can be used in three different difficulty levels. The difference is in the number of cards"
+                    android:textSize="@dimen/font_small" />
                 <android.support.v7.widget.AppCompatSpinner
                     android:id="@+id/spinner_setting_difficulty"
                     android:layout_width="match_parent"
@@ -76,7 +85,7 @@
                     android:gravity="center|start"
                     android:minWidth="100dp"
                     android:padding="4dp"
-                    android:text="The cards image are taken from 500Px Apis. You can change the image by changing the searchTerm"
+                    android:text="The card's images are taken from 500Px Apis. You can change the images by changing the searchTerm"
                     android:textSize="@dimen/font_small" />
 
                 <com.rengwuxian.materialedittext.MaterialEditText

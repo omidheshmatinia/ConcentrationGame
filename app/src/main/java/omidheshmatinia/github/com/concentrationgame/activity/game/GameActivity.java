@@ -62,6 +62,7 @@ public class GameActivity extends MasterActivity implements GameContract.View {
         ButterKnife.bind(this);
         mPresenter = new GamePresenter(this);
         mPresenter.viewCreated();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
