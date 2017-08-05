@@ -6,10 +6,6 @@ import java.util.List;
 
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
 class ScoreHistoryPresenter implements ScoreHistoryContract.Presenter {
 
     private ScoreHistoryContract.View mView;

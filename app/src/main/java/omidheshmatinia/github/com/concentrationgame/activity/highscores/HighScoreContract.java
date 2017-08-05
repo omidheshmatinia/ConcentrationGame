@@ -1,27 +1,26 @@
 package omidheshmatinia.github.com.concentrationgame.activity.highscores;
 
-import java.util.List;
-
-import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.interfaces.MasterActivityViewInterface;
-import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
-import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
-
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
 
 class HighScoreContract {
+
     interface View extends MasterActivityViewInterface {
+        /**
+         *  init view pager and tab to show history items
+         */
         void initViewPager();
+
+        /**
+         * initializing toolbar nad back button
+         */
         void initToolbar();
     }
 
     interface Presenter{
+        /**
+         * inform about finishing creation of view.
+         */
         void viewCreated();
-        void onPause();
-        void onResume();
-        void viewDetached();
     }
 
 }

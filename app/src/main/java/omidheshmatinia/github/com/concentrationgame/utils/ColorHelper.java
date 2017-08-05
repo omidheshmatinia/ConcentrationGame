@@ -7,7 +7,9 @@ import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.base.MasterApplication;
 
 /**
- * Created by Omid Heshmatinia on 8/3/17.
+ * This class is a helper for generating colors and also a wrapper for ContextCompat to get color wherever we like
+ * without passing a Context
+ * @author omid
  */
 
 public class ColorHelper {
@@ -21,6 +23,8 @@ public class ColorHelper {
             R.color.md_lime_200
     };
 
+
+    //<editor-fold desc="Singleton part">
     private ColorHelper(){
     }
 
@@ -31,11 +35,22 @@ public class ColorHelper {
     public static ColorHelper getInstance(){
         return Instance.ITEM;
     }
+    //</editor-fold>
 
+    /**
+     * Used as wrapper for ContextCompat to return color without having access to context
+     * @param colorId is the resource id of the color
+     * @return Color
+     */
     public int getColorFromResource(@ColorRes int colorId){
         return ContextCompat.getColor(MasterApplication.getInstance(), colorId);
     }
 
+    /**
+     * Return a color for card backgrounds
+     * @param row index of color
+     * @return a color from the list of colors
+     */
     public int getColorFromList(int row){
         return ContextCompat.getColor(MasterApplication.getInstance(), colors[row%colors.length]);
     }

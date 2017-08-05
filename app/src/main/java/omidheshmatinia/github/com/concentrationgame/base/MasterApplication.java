@@ -12,10 +12,6 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import omidheshmatinia.github.com.concentrationgame.R;
 
-/**
- * Created by Omid Heshmatinia on 8/3/17.
- */
-
 public class MasterApplication extends Application {
 
     private static MasterApplication sInstance;
@@ -28,7 +24,7 @@ public class MasterApplication extends Application {
                 .threadPoolSize(3)
                 .diskCacheExtraOptions(480, 320, null)
                 .defaultDisplayImageOptions(getDisplayImageOption(R.drawable.icon_think))
-                .build(); //discCache(new UnlimitedDiscCache(cacheDir))
+                .build();
         m.init(config);
     }
 

@@ -13,7 +13,8 @@ import omidheshmatinia.github.com.concentrationgame.base.MasterDatabase;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 
 /**
- * Created by Omid Heshmatinia on 8/5/17.
+ * Anything related to ScoreHistory data retrieval and saving in db is done by this class
+ * @param <T>
  */
 
 public class ScoreHistoryRepository <T extends ScoreHistory> {

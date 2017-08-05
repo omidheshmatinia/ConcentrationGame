@@ -7,7 +7,8 @@ import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.base.MasterApplication;
 
 /**
- * Created by Omid Heshmatinia on 8/3/17.
+ * This class is a helper for anything related to Shared Preference
+ * @author omid
  */
 
 public class PreferenceHelper {
@@ -18,6 +19,7 @@ public class PreferenceHelper {
         private final static String DIFFICULTY_LEVEL = "difficultyLevel";
     }
 
+    //<editor-fold desc="Singleton Part">
     private final static class Instance {
         private final static PreferenceHelper ITEM = new PreferenceHelper (MasterApplication.getInstance());
     }
@@ -29,21 +31,35 @@ public class PreferenceHelper {
     public static PreferenceHelper getInstance(){
         return Instance.ITEM;
     }
+    //</editor-fold>
 
-
+    /**
+     * @return desired search term
+     */
     public String getSearchTerm() {
         return mSharedPreferences.getString(Parameters.SEARCH_TERM,"kitten");
     }
 
+    /**
+     * save chosen search term at Shared Preferences
+     * @param term chosen term
+     */
     public void setSearchTerm(String term){
         mSharedPreferences.edit().putString(Parameters.SEARCH_TERM,term).commit();
     }
 
 
+    /**
+     * @return chosen difficulty level
+     */
     public int getDifficultyLevel() {
         return mSharedPreferences.getInt(Parameters.DIFFICULTY_LEVEL, PublicEnums.Difficulty.Easy.getType());
     }
 
+    /**
+     * save chosen difficulty Type at Shared Preferences
+     * @param type chosen type
+     */
     public void setDifficultyLevel(int type){
         mSharedPreferences.edit().putInt(Parameters.DIFFICULTY_LEVEL,type).commit();
     }

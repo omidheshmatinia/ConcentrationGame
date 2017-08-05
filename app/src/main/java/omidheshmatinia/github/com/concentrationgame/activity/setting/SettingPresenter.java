@@ -1,19 +1,14 @@
 package omidheshmatinia.github.com.concentrationgame.activity.setting;
 
 import android.widget.Toast;
-
 import omidheshmatinia.github.com.concentrationgame.R;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
-public class SettingPresenter implements SettingContract.Presenter{
+class SettingPresenter implements SettingContract.Presenter{
 
     private SettingContract.View mView;
     private SettingContract.Model mModel;
 
-    public SettingPresenter(SettingContract.View mView) {
+    SettingPresenter(SettingContract.View mView) {
         this.mView = mView;
         this.mModel = new SettingModel();
     }

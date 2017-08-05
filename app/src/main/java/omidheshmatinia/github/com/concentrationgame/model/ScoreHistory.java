@@ -2,10 +2,6 @@ package omidheshmatinia.github.com.concentrationgame.model;
 
 import com.j256.ormlite.field.DatabaseField;
 
-/**
- * Created by Omid Heshmatinia on 8/4/17.
- */
-
 public class ScoreHistory {
     public final static String DIFFICULTY_LEVEL = "difficultyLevel";
     public final static String MILLI_SECONDS = "milliSeconds";

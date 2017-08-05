@@ -17,10 +17,6 @@ import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.base.MasterActivity;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
 public class SettingActivity extends MasterActivity implements SettingContract.View {
 
     @BindView(R.id.spinner_setting_difficulty)

@@ -11,8 +11,6 @@ import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.activity.game.GameActivity;
 import omidheshmatinia.github.com.concentrationgame.activity.highscores.HighScoreActivity;
 import omidheshmatinia.github.com.concentrationgame.activity.setting.SettingActivity;
-import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
-
 public class DashboardActivity extends AppCompatActivity {
 
 

@@ -25,18 +25,15 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
-            try{
-
-                TableUtils.createTable(connectionSource, ScoreHistory.class);
-
-            } catch (Exception e){
-                Log.i("DB","errror "+e.getMessage());
-            }
+        try{
+            TableUtils.createTable(connectionSource, ScoreHistory.class);
+        } catch (Exception e){
+            Log.i("DB","errror "+e.getMessage());
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int i, int i1) {
-
     }
 
     public int create (T data) {

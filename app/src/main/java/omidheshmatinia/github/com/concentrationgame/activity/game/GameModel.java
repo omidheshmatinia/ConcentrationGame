@@ -1,7 +1,6 @@
 package omidheshmatinia.github.com.concentrationgame.activity.game;
 
 import android.os.SystemClock;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +12,6 @@ import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 import omidheshmatinia.github.com.concentrationgame.repository.ScoreHistoryRepository;
 import omidheshmatinia.github.com.concentrationgame.utils.PreferenceHelper;
-
-/**
- * Created by Omid Heshmatinia on 8/3/17.
- */
 
 class GameModel implements GameContract.Model {
     private GameContract.ModelPresenter mModelPresenter;

@@ -6,10 +6,6 @@ import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 import omidheshmatinia.github.com.concentrationgame.repository.ScoreHistoryRepository;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
 class ScoreHistoryModel implements ScoreHistoryContract.Model {
     private int mDifficultyType ;
     @Override

@@ -13,10 +13,6 @@ import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.adapter.ScoreHistoryViewPagerAdapter;
 import omidheshmatinia.github.com.concentrationgame.base.MasterActivity;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
 public class HighScoreActivity extends MasterActivity implements HighScoreContract.View {
 
     @BindView(R.id.viewpager_score_history)

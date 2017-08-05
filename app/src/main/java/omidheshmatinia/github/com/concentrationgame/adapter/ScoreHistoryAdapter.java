@@ -12,10 +12,6 @@ import java.util.List;
 import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
 public class ScoreHistoryAdapter extends RecyclerView.Adapter<ScoreHistoryAdapter.ItemHolder>{
 
     List<ScoreHistory> items = new ArrayList<>();

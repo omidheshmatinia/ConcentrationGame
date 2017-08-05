@@ -1,11 +1,5 @@
 package omidheshmatinia.github.com.concentrationgame.model;
 
-import android.support.annotation.BoolRes;
-
-/**
- * Created by Omid Heshmatinia on 8/3/17.
- */
-
 public class PictureCard {
     private String imageUrl;
     private int id;

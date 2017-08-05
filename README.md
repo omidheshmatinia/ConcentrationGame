@@ -6,8 +6,9 @@ This repository is a sample game based on famous [ConcentrationGame](https://en.
 - WebServices done via Retrofit Library
 - For Database i'm using OrmLite ORM
 - Project Architecture is based on MVP
+- For view binding, ButterKnife is used
 
-###todo
+## todo
 - [x] HighSCore
 - [x] Different difficulty level
 - [x] Desired Card Images

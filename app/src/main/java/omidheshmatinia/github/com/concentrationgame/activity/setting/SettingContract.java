@@ -5,29 +5,74 @@ import java.util.List;
 import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.interfaces.MasterActivityViewInterface;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
-public class SettingContract {
+class SettingContract {
 
     interface View extends MasterActivityViewInterface{
+        /**
+         * get search term from {@link SettingActivity#etSearchTerm}
+         * @return
+         */
         String getSearchTerm();
+
+        /**
+         * get difficulty level from {@link SettingActivity#spinnerDifficulty}
+         * @return
+         */
         PublicEnums.Difficulty getDifficulty();
+
+        /**
+         * init {@link SettingActivity#spinnerDifficulty} and also select currently chosen difficulty
+         */
         void initSpinner(List<PublicEnums.Difficulty> types,PublicEnums.Difficulty currentDifficulty);
+
+        /**
+         * fill {@link SettingActivity#etSearchTerm} by currently search term
+         */
         void setSearchTerm(String term);
     }
 
     interface Presenter{
+        /**
+         * inform about finishing creation of view.
+         */
         void viewCreated();
+
+        /**
+         * called whenever user click on save button
+         */
         void buttonSaveClicked();
     }
 
     interface Model{
+
+        /**
+         * get currently chosen difficulty
+         * @return
+         */
         PublicEnums.Difficulty getDifficulty();
+
+
+        /**
+         * get list of all difficulties
+         * @return
+         */
         List<PublicEnums.Difficulty> getAllDifficulties();
+
+        /**
+         * save chosen difficulty to shared preference
+         */
         void setDifficultyAtSharedPreference(PublicEnums.Difficulty type);
+
+
+        /**
+         * save chosen search term to shared preference
+         */
         void setNewSearchTermAtSharedPreference(String term);
+
+        /**
+         * get currently chosen search term
+         * @return
+         */
         String getSearchTerm();
     }
 }

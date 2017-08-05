@@ -12,10 +12,6 @@ import java.util.List;
 import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 
-/**
- * Created by Omid Heshmatinia on 8/3/17.
- */
-
 class GamePresenter implements GameContract.Presenter,GameContract.ModelPresenter {
 
     private GameContract.View mView;
@@ -32,30 +28,14 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
     }
 
     @Override
-    public void onPause() {
-//todo
-    }
-
-    @Override
-    public void onResume() {
-//todo
-    }
-
-    @Override
-    public void viewDetached() {
-//todo
-    }
-
-    @Override
     public void listCardItemClicked(final PictureCard item) {
-        //todo
         if(mView!=null){
             if(mModel.isWrongAnimationRunning()){
                 // we should wait till animation end
                 return;
             }
             if(item.isRevealed()){
-                //do nothing card is reveled right now
+                //do nothing card is revealed right now
                 return;
             }
             if(mModel.getChosenCard()==null) {
@@ -63,10 +43,6 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
                 item.setRevealed(true);
                 mModel.setFirstChosenCard(item);
                 flipACard(item);
-//            }
-//            else if(item.equals(mModel.getChosenCard())){
-//                mView.toast("Please choose your second card",Toast.LENGTH_SHORT);
-//                return;
             } else {
                 // user choose the second card so we should check whether both of them are the same
                 final PictureCard chosenCard= mModel.getChosenCard();
@@ -84,8 +60,8 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
                         mView.showSubmitView();
                     }
                 } else {
-                    mModel.setWrongAnimationIsRunning(true);
                     //items are not the same, return both card to the default position
+                    mModel.setWrongAnimationIsRunning(true);
                     mView.changeWrongViewVisibility(View.VISIBLE);
                     mView.animateWrongView();
                     mModel.setFirstChosenCard(null);
@@ -100,13 +76,10 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
                             flipACard(item);
                             mModel.setWrongAnimationIsRunning(false);
                         }
-                    },1000);
+                    },750);
                 }
             }
         }
-    }
-    private int convertMilliToSecond(long milli){
-        return (int)(milli/1000);
     }
 
     @Override
@@ -132,8 +105,6 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
 
     @Override
     public void searchWebApiResponseIsOk(int maxItems, List<PictureCard> items) {
-        //init list
-        //begin timer
         if(mView!=null){
             for(PictureCard item:new ArrayList<>(items)){
                 items.add(new PictureCard(item.getImageUrl(),item.getId()));

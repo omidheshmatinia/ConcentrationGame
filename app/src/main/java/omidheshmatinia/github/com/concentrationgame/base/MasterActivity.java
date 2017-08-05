@@ -6,10 +6,6 @@ import android.widget.Toast;
 
 import omidheshmatinia.github.com.concentrationgame.interfaces.MasterActivityViewInterface;
 
-/**
- * Created by Omid Heshmatinia on 8/3/17.
- */
-
 public class MasterActivity extends AppCompatActivity implements MasterActivityViewInterface {
     @Override
     public void toast(Object item, int length) {

@@ -18,10 +18,6 @@ import omidheshmatinia.github.com.concentrationgame.adapter.ScoreHistoryAdapter;
 import omidheshmatinia.github.com.concentrationgame.base.MasterFragment;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
 public class ScoreHistoryFragment extends MasterFragment implements ScoreHistoryContract.View {
 
     private final static String DIFFICULTY_TYPE = "DifficultyType";

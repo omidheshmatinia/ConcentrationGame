@@ -65,24 +65,6 @@ public class GameActivity extends MasterActivity implements GameContract.View {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        mPresenter.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mPresenter.onResume();
-    }
-
-    @Override
-    public void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        mPresenter.viewDetached();
-    }
-
-    @Override
     public void initList(List<PictureCard> items,int columnSize) {
 
         Display display = getWindowManager().getDefaultDisplay();

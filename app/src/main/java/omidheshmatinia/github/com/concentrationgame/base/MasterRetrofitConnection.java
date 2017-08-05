@@ -3,29 +3,18 @@ package omidheshmatinia.github.com.concentrationgame.base;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
-        import android.util.Log;
-        import com.google.gson.Gson;
-        import com.google.gson.GsonBuilder;
-
-        import java.util.concurrent.TimeUnit;
-        import okhttp3.OkHttpClient;
-        import okhttp3.RequestBody;
-
-        import org.json.JSONObject;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
 import omidheshmatinia.github.com.concentrationgame.interfaces.WebApiErrorInterface;
-
-        import retrofit2.Retrofit;
-        import retrofit2.converter.gson.GsonConverterFactory;
-
-
-/**
- * Created by Omid Heshmatinia on 8/3/17.
- */
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract class MasterRetrofitConnection <K extends WebApiErrorInterface> {
 
     protected K mWebApiListener;
+
     public void setWebApiListener(K listener) {
         this.mWebApiListener = listener;
     }
@@ -36,10 +25,21 @@ public abstract class MasterRetrofitConnection <K extends WebApiErrorInterface> 
         }
     }
 
-    public String getMessageString(@StringRes int resID) {
+    /**
+     * get message from resource
+     * @param resID
+     * @return
+     */
+    protected String getMessageString(@StringRes int resID) {
         return MasterApplication.getInstance().getString(resID);
     }
 
+    /**
+     * make a retrofit object to communicate with apis
+     * @param mainUrl
+     * @param client if null passed, it would make a default one with 12 seconds time out time
+     * @return
+     */
     protected Retrofit initRetrofit(String mainUrl, @Nullable OkHttpClient client) {
         Gson gson = new GsonBuilder().setLenient().create();
         if (client == null) {
@@ -47,15 +47,12 @@ public abstract class MasterRetrofitConnection <K extends WebApiErrorInterface> 
                     .connectTimeout(12, TimeUnit.SECONDS)
                     .readTimeout(12, TimeUnit.SECONDS)
                     .build();
-
         }
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(mainUrl)
+        return new Retrofit.Builder().baseUrl(mainUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
-
-        return retrofit;
     }
 
 }

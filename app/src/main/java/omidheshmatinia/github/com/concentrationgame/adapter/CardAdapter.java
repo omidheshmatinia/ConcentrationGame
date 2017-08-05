@@ -18,10 +18,6 @@ import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
 import omidheshmatinia.github.com.concentrationgame.utils.ColorHelper;
 
-/**
- * Created by Omid Heshmatinia on 8/3/17.
- */
-
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ItemHolder>{
 
     List<PictureCard> items = new ArrayList<>();

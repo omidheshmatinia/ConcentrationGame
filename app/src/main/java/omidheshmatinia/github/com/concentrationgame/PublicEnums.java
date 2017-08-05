@@ -8,7 +8,7 @@ public class PublicEnums {
 
     public enum Difficulty {
         Easy(4,2,1,"Easy"),
-        Normal(9,4,2,"Normall"),
+        Normal(9,4,2,"Normal"),
         Hard(16,6,3,"Hard");
 
         private int cardNumber ;

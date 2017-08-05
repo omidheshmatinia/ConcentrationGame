@@ -7,10 +7,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.fragments.scorehistory.ScoreHistoryFragment;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
 public class ScoreHistoryViewPagerAdapter extends FragmentStatePagerAdapter {
 
     PublicEnums.Difficulty[] types = PublicEnums.Difficulty.values();

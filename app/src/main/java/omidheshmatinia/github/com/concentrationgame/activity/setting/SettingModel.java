@@ -6,11 +6,7 @@ import java.util.List;
 import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.utils.PreferenceHelper;
 
-/**
- * Created by Omid Heshmatinia on 8/5/17.
- */
-
-public class SettingModel implements SettingContract.Model {
+class SettingModel implements SettingContract.Model {
 
     @Override
     public PublicEnums.Difficulty getDifficulty() {
