@@ -71,16 +71,13 @@ class GamePresenter implements GameContract.Presenter,GameContract.ModelPresente
                     mView.animateWrongView();
                     mModel.setFirstChosenCard(null);
                     flipACard(item);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mView.changeWrongViewVisibility(View.GONE);
-                            item.setRevealed(false);
-                            chosenCard.setRevealed(false);
-                            flipACard(chosenCard);
-                            flipACard(item);
-                            mModel.setWrongAnimationIsRunning(false);
-                        }
+                    new Handler().postDelayed(() -> {
+                        mView.changeWrongViewVisibility(View.GONE);
+                        item.setRevealed(false);
+                        chosenCard.setRevealed(false);
+                        flipACard(chosenCard);
+                        flipACard(item);
+                        mModel.setWrongAnimationIsRunning(false);
                     },750);
                 }
             }

@@ -75,12 +75,13 @@ public class GameActivity extends MasterActivity implements GameContract.View {
 
         int numberOfColumns = screenWidth / (int)getResources().getDimension(R.dimen.width_cards) ;
         mCardList.setLayoutManager(new GridLayoutManager(getActivityContext(),numberOfColumns));
-        mCardList.setAdapter(new CardAdapter(items, new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                PictureCard item = (PictureCard) v.getTag();
+
+        mCardList.setAdapter( new CardAdapter(
+                items,
+                v -> { PictureCard item = (PictureCard) v.getTag();
                 mPresenter.listCardItemClicked(item);
             }
-        }));
+        ));
 
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
         mCardList.addItemDecoration(new GridItemDecoration(numberOfColumns, spacingInPixels, true, 0));
