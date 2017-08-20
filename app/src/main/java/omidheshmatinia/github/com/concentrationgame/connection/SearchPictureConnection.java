@@ -1,9 +1,16 @@
 package omidheshmatinia.github.com.concentrationgame.connection;
 
+import android.util.Log;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -25,7 +32,7 @@ import retrofit2.http.QueryMap;
  * @author omid
  */
 public class SearchPictureConnection <T extends WebApiSearchPictureResponseInterface>
-        extends MasterRetrofitConnection<T> implements Callback<JsonElement> {
+        extends MasterRetrofitConnection<T> {
 
     /**
      * search 500 px for desired pictures
@@ -38,45 +45,50 @@ public class SearchPictureConnection <T extends WebApiSearchPictureResponseInter
         parameters.put("consumer_key",PublicConstants.CONSUMER_KEY);
         parameters.put("term",term);
         Retrofit retrofit = initRetrofit(PublicConstants.BASE_API_URL, null);
-        retrofit.create(SearchApi.class).search(parameters).enqueue(this);
-    }
 
-    @Override
-    public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
-        if(response.isSuccessful()){
-            JsonObject serverResponse = response.body().getAsJsonObject();
-            if(serverResponse.has("photos")){
-                List<PictureCard> items= new ArrayList<>();
-                int maxNumberOfItems = 0;
-                JsonArray array = serverResponse.getAsJsonArray("photos");
-                for(int i=0;i<array.size();i++){
-                    String url = array.get(i).getAsJsonObject().get("image_url").getAsString();
-                    items.add(new PictureCard(url,i+1));
+        retrofit.create(SearchApi.class)
+            .search(parameters)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(new Observer<JsonElement>() {
+                @Override public void onSubscribe(@NonNull Disposable d) {
+
                 }
-                maxNumberOfItems= serverResponse.get("total_items").getAsInt();
-                mWebApiListener.searchComplete(maxNumberOfItems,items);
-            } else {
-                if(serverResponse.has("error")){
-                    mWebApiListener.errorHappened(serverResponse.get("error").getAsString());
-                } else {
-                    mWebApiListener.errorHappened(getMessageString(R.string.error_webservice_unknown));
+
+                @Override public void onNext(@NonNull JsonElement jsonElement) {
+                    JsonObject serverResponse = jsonElement.getAsJsonObject();
+                    if(serverResponse.has("photos")){
+                        List<PictureCard> items= new ArrayList<>();
+                        int maxNumberOfItems = 0;
+                        JsonArray array = serverResponse.getAsJsonArray("photos");
+                        for(int i=0;i<array.size();i++){
+                            String url = array.get(i).getAsJsonObject().get("image_url").getAsString();
+                            items.add(new PictureCard(url,i+1));
+                        }
+                        maxNumberOfItems= serverResponse.get("total_items").getAsInt();
+                        mWebApiListener.searchComplete(maxNumberOfItems,items);
+                    } else {
+                        if(serverResponse.has("error")){
+                            mWebApiListener.errorHappened(serverResponse.get("error").getAsString());
+                        } else {
+                            mWebApiListener.errorHappened(getMessageString(R.string.error_webservice_unknown));
+                        }
+                    }
                 }
-            }
-        } else {
-            mWebApiListener.errorHappened(getMessageString(R.string.error_webservice_data));
-        }
-    }
 
-    @Override
-    public void onFailure(Call<JsonElement> call, Throwable t) {
-        if(mWebApiListener!=null)
-            mWebApiListener.errorHappened(getMessageString(R.string.error_webservice_connection));
-    }
+                @Override public void onError(@NonNull Throwable e) {
+                  if(mWebApiListener!=null)
+                          mWebApiListener.errorHappened(getMessageString(R.string.error_webservice_connection));
+                }
 
+                @Override public void onComplete() {
+
+                }
+            });
+    }
 
     interface SearchApi {
-        @GET(Url.Px.Search)
-        Call<JsonElement> search(@QueryMap LinkedHashMap<String,String> data);
+        @GET(Url.Px.Search) Observable<JsonElement> search(@QueryMap LinkedHashMap<String,String> data);
     }
 
 }

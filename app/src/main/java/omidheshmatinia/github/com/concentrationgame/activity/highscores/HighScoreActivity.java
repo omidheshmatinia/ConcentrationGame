@@ -9,9 +9,11 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import javax.inject.Inject;
 import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.adapter.ScoreHistoryViewPagerAdapter;
 import omidheshmatinia.github.com.concentrationgame.base.MasterActivity;
+import omidheshmatinia.github.com.concentrationgame.dagger.ApplicationModule;
 
 public class HighScoreActivity extends MasterActivity implements HighScoreContract.View {
 
@@ -21,15 +23,22 @@ public class HighScoreActivity extends MasterActivity implements HighScoreContra
     SmartTabLayout tabLayout;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    private HighScoreContract.Presenter mPresenter;
+    @Inject
+    HighScoreContract.Presenter presenter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_history);
         ButterKnife.bind(this);
+        daggerInitialize();
+        presenter.viewCreated();
+    }
 
-        mPresenter = new HighScorePresenter(this);
-        mPresenter.viewCreated();
+    private void daggerInitialize() {
+        DaggerHighScoreComponent.builder()
+            .highScoreActivityModule(new HighScoreActivityModule(this))
+            .build()
+            .inject(this);
     }
 
     @Override

@@ -11,14 +11,19 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import omidheshmatinia.github.com.concentrationgame.R;
+import omidheshmatinia.github.com.concentrationgame.dagger.ApplicationComponent;
+import omidheshmatinia.github.com.concentrationgame.dagger.ApplicationModule;
+import omidheshmatinia.github.com.concentrationgame.dagger.DaggerApplicationComponent;
 
 public class MasterApplication extends Application {
 
-    private static MasterApplication sInstance;
+    private static MasterApplication instance;
+    private ApplicationComponent appComponent;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        sInstance = this;
+        instance = this;
         ImageLoader m= ImageLoader.getInstance();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .threadPoolSize(3)
@@ -26,6 +31,10 @@ public class MasterApplication extends Application {
                 .defaultDisplayImageOptions(getDisplayImageOption(R.drawable.icon_think))
                 .build();
         m.init(config);
+        appComponent = DaggerApplicationComponent.builder()
+            .applicationModule(new ApplicationModule(this))
+            .build();
+        appComponent.inject(this);
     }
 
     public DisplayImageOptions getDisplayImageOption(@DrawableRes int icon){
@@ -45,6 +54,10 @@ public class MasterApplication extends Application {
     }
 
     public static MasterApplication getInstance(){
-        return sInstance;
+        return instance;
+    }
+
+    public ApplicationComponent getAppComponent() {
+        return appComponent;
     }
 }

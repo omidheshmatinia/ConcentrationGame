@@ -8,9 +8,9 @@ class SettingPresenter implements SettingContract.Presenter{
     private SettingContract.View mView;
     private SettingContract.Model mModel;
 
-    SettingPresenter(SettingContract.View mView) {
+    SettingPresenter(SettingContract.View mView,SettingContract.Model model) {
         this.mView = mView;
-        this.mModel = new SettingModel();
+        this.mModel = model;
     }
 
     @Override

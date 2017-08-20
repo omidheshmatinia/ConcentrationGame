@@ -13,6 +13,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import javax.inject.Inject;
 import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.base.MasterActivity;
@@ -23,16 +24,23 @@ public class SettingActivity extends MasterActivity implements SettingContract.V
     AppCompatSpinner spinnerDifficulty;
     @BindView(R.id.edittext_setting_search_term)
     MaterialEditText etSearchTerm;
-
-    private SettingContract.Presenter mPresenter;
+    @Inject
+    SettingContract.Presenter presenter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        daggerInitialize();
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        mPresenter= new SettingPresenter(this);
-        mPresenter.viewCreated();
+        presenter.viewCreated();
+    }
+
+    private void daggerInitialize() {
+        DaggerSettingComponent.builder()
+            .settingModule(new SettingModule(this))
+            .build()
+            .inject(this);
     }
 
     @Override
@@ -61,7 +69,7 @@ public class SettingActivity extends MasterActivity implements SettingContract.V
     public void onClick(View v){
         switch (v.getId()){
             case R.id.button_setting_save:
-                mPresenter.buttonSaveClicked();
+                presenter.buttonSaveClicked();
                 break;
         }
     }

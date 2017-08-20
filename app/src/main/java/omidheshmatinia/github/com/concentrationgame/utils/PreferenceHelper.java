@@ -1,8 +1,10 @@
 package omidheshmatinia.github.com.concentrationgame.utils;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 
+import javax.inject.Inject;
 import omidheshmatinia.github.com.concentrationgame.PublicEnums;
 import omidheshmatinia.github.com.concentrationgame.base.MasterApplication;
 
@@ -24,7 +26,8 @@ public class PreferenceHelper {
         private final static PreferenceHelper ITEM = new PreferenceHelper (MasterApplication.getInstance());
     }
 
-    private PreferenceHelper(Application context) {
+    @Inject
+    public PreferenceHelper(Context context) {
         this.mSharedPreferences = context.getSharedPreferences("ConcentrationGame",0);
     }
 
@@ -32,6 +35,7 @@ public class PreferenceHelper {
         return Instance.ITEM;
     }
     //</editor-fold>
+
 
     /**
      * @return desired search term

@@ -7,6 +7,8 @@ This repository is a sample game based on famous [ConcentrationGame](https://en.
 - For Database i'm using OrmLite ORM
 - Project Architecture is based on MVP
 - For view binding, ButterKnife is used
+- RxJava2 used for retrofit callbacks
+- Dagger2 used for dependency Injection
 
 ## todo
 - [x] HighSCore

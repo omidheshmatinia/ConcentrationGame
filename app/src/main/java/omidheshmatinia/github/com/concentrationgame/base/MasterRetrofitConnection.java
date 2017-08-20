@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import omidheshmatinia.github.com.concentrationgame.interfaces.WebApiErrorInterface;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract class MasterRetrofitConnection <K extends WebApiErrorInterface> {
@@ -44,15 +45,16 @@ public abstract class MasterRetrofitConnection <K extends WebApiErrorInterface> 
         Gson gson = new GsonBuilder().setLenient().create();
         if (client == null) {
             client = new OkHttpClient.Builder()
-                    .connectTimeout(12, TimeUnit.SECONDS)
-                    .readTimeout(12, TimeUnit.SECONDS)
-                    .build();
+                .connectTimeout(12, TimeUnit.SECONDS)
+                .readTimeout(12, TimeUnit.SECONDS)
+                .build();
         }
 
         return new Retrofit.Builder().baseUrl(mainUrl)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(client)
-                .build();
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(client)
+            .build();
     }
 
 }
