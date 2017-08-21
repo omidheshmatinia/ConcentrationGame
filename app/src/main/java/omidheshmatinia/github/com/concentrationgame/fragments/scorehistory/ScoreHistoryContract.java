@@ -33,6 +33,11 @@ class ScoreHistoryContract {
          * @return
          */
         void setDifficultyTypeFromIntent(int difficultyType);
+
+        /**
+         * inform about detaching view to do clean up jobs
+         */
+        void viewDetached();
     }
 
     interface Model{

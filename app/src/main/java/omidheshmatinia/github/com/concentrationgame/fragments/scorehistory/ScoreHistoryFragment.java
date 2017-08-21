@@ -57,6 +57,11 @@ public class ScoreHistoryFragment extends MasterFragment implements ScoreHistory
         mPresenter.viewCreated();
     }
 
+    @Override public void onDetach() {
+        mPresenter.viewDetached();
+        super.onDetach();
+    }
+
     @Override
     public void initList(List<ScoreHistory> items) {
         historyList.setLayoutManager(new LinearLayoutManager(getContext()));
