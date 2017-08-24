@@ -1,12 +1,7 @@
 package omidheshmatinia.github.com.concentrationgame.activity.setting;
 
-import android.provider.ContactsContract;
 import dagger.Module;
 import dagger.Provides;
-
-/**
- * Created by Omid Heshmatinia on 19/08/2017.
- */
 
 @Module
 class SettingModule {

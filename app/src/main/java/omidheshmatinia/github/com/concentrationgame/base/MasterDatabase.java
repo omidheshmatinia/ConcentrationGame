@@ -39,7 +39,7 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
     public int create (T data) {
         int count = 0;
         try {
-            Dao connection = getDao(MODEL_CLASS);
+            Dao<T,Long> connection = getDao(MODEL_CLASS);
             count = connection.create(data);
         } catch (Exception ignore) {
             Log.d(MODEL_CLASS.getClass().getName(), ignore.getMessage());

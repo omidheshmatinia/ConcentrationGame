@@ -3,11 +3,9 @@
     <dimen name="font_large">18sp</dimen>
     <dimen name="font_medium">15sp</dimen>
     <dimen name="font_small">12sp</dimen>
-    <dimen name="font_micro">10sp</dimen>
     <dimen name="width_cards">100dp</dimen>
     <dimen name="height_cards">130dp</dimen>
     <dimen name="grid_spacing">6dp</dimen>
-    <dimen name="app_bar_height">180dp</dimen>
     <dimen name="size_image_achievement">100dp</dimen>
     <dimen name="size_image_concentration">150dp</dimen>
 </resources>

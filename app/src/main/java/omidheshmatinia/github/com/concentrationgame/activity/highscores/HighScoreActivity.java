@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.adapter.ScoreHistoryViewPagerAdapter;
 import omidheshmatinia.github.com.concentrationgame.base.MasterActivity;
-import omidheshmatinia.github.com.concentrationgame.dagger.ApplicationModule;
 
 public class HighScoreActivity extends MasterActivity implements HighScoreContract.View {
 
@@ -50,6 +49,7 @@ public class HighScoreActivity extends MasterActivity implements HighScoreContra
     @Override
     public void initToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

@@ -11,7 +11,7 @@ import android.view.Display;
 public class ScreenHelper {
 
     /**
-     * @param ct
+     * @param ct An activity
      * @return screen width
      */
     public static int getScreenWidth(AppCompatActivity ct){
@@ -22,7 +22,7 @@ public class ScreenHelper {
     }
 
     /**
-     * @param ct
+     * @param ct An activity
      * @return screen height
      */
     public static int getScreenHeight(AppCompatActivity ct){

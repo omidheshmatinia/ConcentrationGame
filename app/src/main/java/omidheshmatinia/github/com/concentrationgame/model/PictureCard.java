@@ -45,6 +45,8 @@ public class PictureCard {
 
     @Override
     public boolean equals(Object obj) {
+        if(!(obj instanceof PictureCard))
+            return false;
         PictureCard item = (PictureCard) obj;
         return item.getId()==this.getId() && item.getPosition() == this.getPosition();
     }

@@ -28,8 +28,6 @@ public abstract class MasterRetrofitConnection <K extends WebApiErrorInterface> 
 
     /**
      * get message from resource
-     * @param resID
-     * @return
      */
     protected String getMessageString(@StringRes int resID) {
         return MasterApplication.getInstance().getString(resID);
@@ -37,9 +35,7 @@ public abstract class MasterRetrofitConnection <K extends WebApiErrorInterface> 
 
     /**
      * make a retrofit object to communicate with apis
-     * @param mainUrl
      * @param client if null passed, it would make a default one with 12 seconds time out time
-     * @return
      */
     protected Retrofit initRetrofit(String mainUrl, @Nullable OkHttpClient client) {
         Gson gson = new GsonBuilder().setLenient().create();

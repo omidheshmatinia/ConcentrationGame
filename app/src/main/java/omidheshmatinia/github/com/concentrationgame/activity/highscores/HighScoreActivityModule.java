@@ -3,11 +3,6 @@ package omidheshmatinia.github.com.concentrationgame.activity.highscores;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by Omid Heshmatinia on 19/08/2017.
- */
-
-
 @Module
 class HighScoreActivityModule {
   HighScoreContract.View view;

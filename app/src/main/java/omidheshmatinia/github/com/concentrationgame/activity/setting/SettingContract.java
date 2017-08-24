@@ -10,13 +10,11 @@ class SettingContract {
     interface View extends MasterActivityViewInterface{
         /**
          * get search term from {@link SettingActivity#etSearchTerm}
-         * @return
          */
         String getSearchTerm();
 
         /**
          * get difficulty level from {@link SettingActivity#spinnerDifficulty}
-         * @return
          */
         PublicEnums.Difficulty getDifficulty();
 
@@ -47,14 +45,12 @@ class SettingContract {
 
         /**
          * get currently chosen difficulty
-         * @return
          */
         PublicEnums.Difficulty getDifficulty();
 
 
         /**
          * get list of all difficulties
-         * @return
          */
         List<PublicEnums.Difficulty> getAllDifficulties();
 
@@ -71,7 +67,6 @@ class SettingContract {
 
         /**
          * get currently chosen search term
-         * @return
          */
         String getSearchTerm();
     }

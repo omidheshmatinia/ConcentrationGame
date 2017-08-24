@@ -1,6 +1,5 @@
 package omidheshmatinia.github.com.concentrationgame.utils;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 

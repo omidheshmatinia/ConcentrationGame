@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import omidheshmatinia.github.com.concentrationgame.interfaces.MasterActivityViewInterface;
 
-public class MasterActivity extends AppCompatActivity implements MasterActivityViewInterface {
+public abstract class MasterActivity extends AppCompatActivity implements MasterActivityViewInterface {
     @Override
     public void toast(Object item, int length) {
         if(item==null)

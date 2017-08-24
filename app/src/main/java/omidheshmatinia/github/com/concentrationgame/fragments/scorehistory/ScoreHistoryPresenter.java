@@ -1,27 +1,14 @@
 package omidheshmatinia.github.com.concentrationgame.fragments.scorehistory;
 
-import android.util.Log;
 import android.view.View;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Predicate;
-import io.reactivex.observers.DefaultObserver;
-import io.reactivex.observers.DisposableMaybeObserver;
 import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
-import static dagger.internal.InstanceFactory.create;
 
 class ScoreHistoryPresenter implements ScoreHistoryContract.Presenter {
 

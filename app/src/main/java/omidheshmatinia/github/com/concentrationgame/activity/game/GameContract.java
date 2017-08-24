@@ -12,20 +12,20 @@ class GameContract {
     interface View extends MasterActivityViewInterface{
         /**
          * init {@link GameActivity#mCardList} and fill it with cards
-         * @param items
-         * @param columnSize
+         * @param items cards
+         * @param columnSize size of columns
          */
         void initList(List<PictureCard> items, int columnSize);
 
         /**
          * flip chosen card and show the other side
-         * @param position
+         * @param position the card number which should flip
          */
         void flipCard(int position);
 
         /**
          * change {@link GameActivity#wrongView} visibility
-         * @param visibility
+         * @param visibility desired visibility
          */
         void changeWrongViewVisibility(int visibility);
 
@@ -36,7 +36,7 @@ class GameContract {
 
         /**
          * start and stop chronometer
-         * @param start
+         * @param start wheter chronometer should start or stop
          */
         void changeChronometerStatus(boolean start);
 
@@ -52,13 +52,11 @@ class GameContract {
 
         /**
          * Set begin time of chronometer
-         * @param beginTime
          */
         void setBeginTimeOFChronometer(long beginTime);
 
         /**
          * change visibility of {@link GameActivity#progressBar}
-         * @param visibility
          */
         void changeProgressbarVisibility(int visibility);
     }
@@ -76,7 +74,6 @@ class GameContract {
 
         /**
          * called when user click on a card
-         * @param item
          */
         void listCardItemClicked(PictureCard item);
 
@@ -104,8 +101,8 @@ class GameContract {
 
         /**
          * get image from 500px api
-         * @param difficulty
-         * @param term
+         * @param difficulty indicate number of cards which should be retrieved from api
+         * @param term search parameter
          */
         void getPicturesFromApi(PublicEnums.Difficulty difficulty,String term);
 
@@ -116,7 +113,6 @@ class GameContract {
 
         /**
          * used to store information of first chosen card for later comparison
-         * @param card
          */
         void setFirstChosenCard(PictureCard card);
 
@@ -127,7 +123,6 @@ class GameContract {
 
         /**
          * save all cards which are retrieved from server which get doubled and shuffled
-         * @param items
          */
         void setCardList(List<PictureCard> items);
 
@@ -143,13 +138,11 @@ class GameContract {
 
         /**
          * set running status of red screen animation
-         * @param isRunning
          */
         void setWrongAnimationIsRunning(boolean isRunning);
 
         /**
          * save history data to database
-         * @param history
          */
         void saveHistoryItemInDb(ScoreHistory history);
 
@@ -160,7 +153,6 @@ class GameContract {
 
         /**
          * Update the object in db
-         * @param historyData
          */
         void updateHistoryData(ScoreHistory historyData);
 

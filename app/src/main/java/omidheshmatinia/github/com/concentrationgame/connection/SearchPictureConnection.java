@@ -1,6 +1,5 @@
 package omidheshmatinia.github.com.concentrationgame.connection;
 
-import android.util.Log;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -20,9 +19,6 @@ import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.base.MasterRetrofitConnection;
 import omidheshmatinia.github.com.concentrationgame.interfaces.webapi.WebApiSearchPictureResponseInterface;
 import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
@@ -40,7 +36,7 @@ public class SearchPictureConnection <T extends WebApiSearchPictureResponseInter
      * @param term image titles or tags
      */
     public void search(int number,String term){
-        LinkedHashMap parameters = new LinkedHashMap();
+        LinkedHashMap<String,String> parameters = new LinkedHashMap<>();
         parameters.put("rpp",String.valueOf(number));
         parameters.put("consumer_key",PublicConstants.CONSUMER_KEY);
         parameters.put("term",term);
@@ -59,7 +55,7 @@ public class SearchPictureConnection <T extends WebApiSearchPictureResponseInter
                     JsonObject serverResponse = jsonElement.getAsJsonObject();
                     if(serverResponse.has("photos")){
                         List<PictureCard> items= new ArrayList<>();
-                        int maxNumberOfItems = 0;
+                        int maxNumberOfItems ;
                         JsonArray array = serverResponse.getAsJsonArray("photos");
                         for(int i=0;i<array.size();i++){
                             String url = array.get(i).getAsJsonObject().get("image_url").getAsString();

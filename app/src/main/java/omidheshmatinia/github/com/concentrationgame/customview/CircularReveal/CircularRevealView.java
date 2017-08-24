@@ -1,9 +1,5 @@
 package omidheshmatinia.github.com.concentrationgame.customview.CircularReveal;
 
-/**
- * Created by naman on 18/03/15.
- */
-
 import android.animation.Animator;
 import android.content.Context;
 import android.graphics.Color;
@@ -210,7 +206,6 @@ public class CircularRevealView extends ViewGroup {
      *
      * @param x circle center x
      * @param y circle center y
-     * @return
      */
     private float calculateScale(int x, int y) {
         final float centerX = getWidth() / 2f;

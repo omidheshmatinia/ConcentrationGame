@@ -1,21 +1,15 @@
 package omidheshmatinia.github.com.concentrationgame.activity.game;
 
 import android.animation.Animator;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.widget.Chronometer;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -32,7 +26,6 @@ import omidheshmatinia.github.com.concentrationgame.R;
 import omidheshmatinia.github.com.concentrationgame.adapter.CardAdapter;
 import omidheshmatinia.github.com.concentrationgame.base.MasterActivity;
 import omidheshmatinia.github.com.concentrationgame.customview.CircularReveal.CircularRevealView;
-import omidheshmatinia.github.com.concentrationgame.customview.FixedGridLayoutManager;
 import omidheshmatinia.github.com.concentrationgame.customview.GridItemDecoration;
 import omidheshmatinia.github.com.concentrationgame.model.PictureCard;
 import omidheshmatinia.github.com.concentrationgame.utils.ColorHelper;
@@ -62,7 +55,8 @@ public class GameActivity extends MasterActivity implements GameContract.View {
         ButterKnife.bind(this);
         mPresenter = new GamePresenter(this);
         mPresenter.viewCreated();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

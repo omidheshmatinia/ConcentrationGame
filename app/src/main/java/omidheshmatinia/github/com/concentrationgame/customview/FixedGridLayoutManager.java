@@ -260,7 +260,7 @@ public class FixedGridLayoutManager extends RecyclerView.LayoutManager {
         //Evaluate any disappearing views that may exist
         if (!state.isPreLayout() && !recycler.getScrapList().isEmpty()) {
             final List<RecyclerView.ViewHolder> scrapList = recycler.getScrapList();
-            final HashSet<View> disappearingViews = new HashSet<View>(scrapList.size());
+            final HashSet<View> disappearingViews = new HashSet<>(scrapList.size());
 
             for (RecyclerView.ViewHolder holder : scrapList) {
                 final View child = holder.itemView;
@@ -325,7 +325,7 @@ public class FixedGridLayoutManager extends RecyclerView.LayoutManager {
          * detachView() is a lightweight operation that we can use to
          * quickly reorder views without a full add/remove.
          */
-        SparseArray<View> viewCache = new SparseArray<View>(getChildCount());
+        SparseArray<View> viewCache = new SparseArray<>(getChildCount());
         int startLeftOffset = emptyLeft;
         int startTopOffset = emptyTop;
         if (getChildCount() != 0) {

@@ -24,8 +24,8 @@ class SettingPresenter implements SettingContract.Presenter{
         if(mView!=null){
             mModel.setDifficultyAtSharedPreference(mView.getDifficulty());
             mModel.setNewSearchTermAtSharedPreference(mView.getSearchTerm());
+            mView.toast(R.string.message_setting_saved, Toast.LENGTH_SHORT);
+            mView.finishActivity();
         }
-        mView.toast(R.string.message_setting_saved, Toast.LENGTH_SHORT);
-        mView.finishActivity();
     }
 }

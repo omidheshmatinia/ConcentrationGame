@@ -1,9 +1,5 @@
 package omidheshmatinia.github.com.concentrationgame.customview.CircularReveal;
 
-/**
- * Created by naman on 18/03/15.
- */
-
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.View;

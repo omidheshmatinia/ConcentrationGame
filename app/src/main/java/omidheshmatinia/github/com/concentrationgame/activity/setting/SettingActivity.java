@@ -32,7 +32,8 @@ public class SettingActivity extends MasterActivity implements SettingContract.V
         daggerInitialize();
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar()!=null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         presenter.viewCreated();
     }
 
@@ -55,7 +56,7 @@ public class SettingActivity extends MasterActivity implements SettingContract.V
 
     @Override
     public void initSpinner(List<PublicEnums.Difficulty> types,PublicEnums.Difficulty currentDifficulty) {
-        spinnerDifficulty.setAdapter(new ArrayAdapter(getActivityContext(),R.layout.item_spinner,types));
+        spinnerDifficulty.setAdapter(new ArrayAdapter<>(getActivityContext(),R.layout.item_spinner,types));
         int index = types.indexOf(currentDifficulty);
         spinnerDifficulty.setSelection(index);
     }

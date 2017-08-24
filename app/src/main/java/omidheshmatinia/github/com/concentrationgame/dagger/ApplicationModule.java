@@ -8,10 +8,6 @@ import javax.inject.Singleton;
 import omidheshmatinia.github.com.concentrationgame.base.MasterApplication;
 import omidheshmatinia.github.com.concentrationgame.utils.PreferenceHelper;
 
-/**
- * Created by Omid Heshmatinia on 19/08/2017.
- */
-
 @Module
 public class ApplicationModule {
 
