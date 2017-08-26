@@ -48,7 +48,7 @@ public class PreferenceHelper {
      * @param term chosen term
      */
     public void setSearchTerm(String term){
-        mSharedPreferences.edit().putString(Parameters.SEARCH_TERM,term).commit();
+        mSharedPreferences.edit().putString(Parameters.SEARCH_TERM,term).apply();
     }
 
 
@@ -64,6 +64,6 @@ public class PreferenceHelper {
      * @param type chosen type
      */
     public void setDifficultyLevel(int type){
-        mSharedPreferences.edit().putInt(Parameters.DIFFICULTY_LEVEL,type).commit();
+        mSharedPreferences.edit().putInt(Parameters.DIFFICULTY_LEVEL,type).apply();
     }
 }

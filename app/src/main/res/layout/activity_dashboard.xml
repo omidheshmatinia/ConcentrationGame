@@ -22,6 +22,7 @@
             android:layout_width="@dimen/size_image_concentration"
             android:layout_height="@dimen/size_image_concentration"
             android:scaleType="fitCenter"
+            android:contentDescription="@string/content_description_app_icon"
             android:src="@drawable/icon_think"
             android:layout_margin="8dp"/>
         <TextView

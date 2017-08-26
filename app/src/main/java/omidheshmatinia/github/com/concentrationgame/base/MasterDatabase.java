@@ -15,7 +15,7 @@ import java.util.List;
 import omidheshmatinia.github.com.concentrationgame.model.ScoreHistory;
 
 public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
-    protected Class MODEL_CLASS;
+    protected Class<T> MODEL_CLASS;
     private final static String DB_NAME="ConcentrationGame";
     private final static int    DB_VERSION=1;
 
@@ -49,8 +49,8 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
 
     public T getFirst () {
         try {
-            Dao localConnection = getDao(MODEL_CLASS);
-            return (T)localConnection.queryForFirst(localConnection.queryBuilder().prepare());
+            Dao<T,Long> localConnection = getDao(MODEL_CLASS);
+            return localConnection.queryForFirst(localConnection.queryBuilder().prepare());
         } catch (Exception ignore) {
             Log.d(MODEL_CLASS.getName(), ignore.getMessage());
         }
@@ -60,7 +60,7 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
     public List<T> getAll () {
         List<T> objectList = new ArrayList<>();
         try {
-            Dao localConnection = getDao(MODEL_CLASS);
+            Dao<T,Long> localConnection = getDao(MODEL_CLASS);
             objectList = localConnection.queryForAll();
         } catch (Exception ignore) {
             Log.d(MODEL_CLASS.getName(), ignore.getMessage());
@@ -71,7 +71,7 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
     public int update (T data) {
         int count = 0;
         try {
-            Dao connection = getDao(MODEL_CLASS);
+            Dao<T,Long> connection = getDao(MODEL_CLASS);
             count = connection.update(data);
         } catch (Exception ignore) {
             Log.d(MODEL_CLASS.getName(), ignore.getMessage());
@@ -83,7 +83,7 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
     public int update (List<T> data) {
         int count = 0;
         try {
-            Dao connection = getDao(MODEL_CLASS);
+            Dao<T,Long> connection = getDao(MODEL_CLASS);
             for(int i=0;i<data.size();i++) {
                 count += connection.update(data.get(i));
             }
@@ -103,10 +103,10 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
         }
     }
 
-    public int create (List objects) {
+    public int create (List<T> objects) {
         int count = 0;
         try {
-            Dao connection = getDao(MODEL_CLASS);
+            Dao<T,Long> connection = getDao(MODEL_CLASS);
             count = connection.create(objects);
         } catch (Exception ignore) {
             Log.d(MODEL_CLASS.getName(), ignore.getMessage());
@@ -114,10 +114,10 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
         return count;
     }
 
-    public int delete (List objects) {
+    public int delete (List<T> objects) {
         int count = 0;
         try {
-            Dao connection = getDao(MODEL_CLASS);
+            Dao<T,Long> connection = getDao(MODEL_CLASS);
             count = connection.delete(objects);
         } catch (Exception ignore) {
             Log.d(MODEL_CLASS.getName(), ignore.getMessage());
@@ -125,10 +125,10 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
         return count;
     }
 
-    public int delete (Object objects) {
+    public int delete (T objects) {
         int count = 0;
         try {
-            Dao connection = getDao(MODEL_CLASS);
+            Dao<T,Long> connection = getDao(MODEL_CLASS);
             count = connection.delete(objects);
         } catch (Exception ignore) {
             Log.d(MODEL_CLASS.getName(), ignore.getMessage());
@@ -138,8 +138,8 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
 
     public T getByField (Object object, String columnName) {
         try{
-            Dao localDao=getDao(MODEL_CLASS);
-            return (T)localDao.queryForFirst(localDao.queryBuilder().where().eq(columnName,object).prepare());
+            Dao<T,Long> localDao=getDao(MODEL_CLASS);
+            return localDao.queryForFirst(localDao.queryBuilder().where().eq(columnName,object).prepare());
         }catch (Exception ignore){
             Log.d(MODEL_CLASS.getName(), ignore.getMessage());
             return null;
@@ -148,11 +148,11 @@ public class MasterDatabase<T> extends OrmLiteSqliteOpenHelper {
 
     public List<T> getListByField (Object object, String columnName) {
         try{
-            Dao localDao=getDao(MODEL_CLASS);
+            Dao<T,Long> localDao=getDao(MODEL_CLASS);
             return localDao.query(localDao.queryBuilder().where().eq(columnName,object).prepare());
         }catch (Exception ignore){
             Log.d(MODEL_CLASS.getName(), ignore.getMessage());
-            return new ArrayList();
+            return new ArrayList<>();
         }
     }
 }

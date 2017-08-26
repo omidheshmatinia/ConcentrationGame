@@ -19,6 +19,7 @@
         <ImageView
             android:layout_width="@dimen/size_image_achievement"
             android:layout_height="@dimen/size_image_achievement"
+            android:contentDescription="@string/content_description_no_history_icon"
             android:src="@drawable/icon_achievment"
             android:scaleType="fitCenter"/>
         <TextView

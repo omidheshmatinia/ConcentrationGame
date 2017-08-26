@@ -38,19 +38,18 @@ public class MasterApplication extends Application {
     }
 
     public DisplayImageOptions getDisplayImageOption(@DrawableRes int icon){
-        DisplayImageOptions options = new DisplayImageOptions
-                .Builder()
-                .showImageOnLoading(icon)
-                .showImageForEmptyUri(icon)
-                .showImageOnFail(icon)
-                .cacheInMemory(false)
-                .cacheOnDisk(true)
-                .imageScaleType(ImageScaleType.EXACTLY)
-                .considerExifParams(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .displayer(new FadeInBitmapDisplayer(1000))
-                .build();
-        return options;
+        return new DisplayImageOptions
+            .Builder()
+            .showImageOnLoading(icon)
+            .showImageForEmptyUri(icon)
+            .showImageOnFail(icon)
+            .cacheInMemory(false)
+            .cacheOnDisk(true)
+            .imageScaleType(ImageScaleType.EXACTLY)
+            .considerExifParams(true)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .displayer(new FadeInBitmapDisplayer(1000))
+            .build();
     }
 
     public static MasterApplication getInstance(){

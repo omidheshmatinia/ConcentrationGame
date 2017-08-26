@@ -3,4 +3,8 @@
     <string name="error_webservice_connection">Error in connection</string>
     <string name="error_webservice_unknown">Unknown problem happened</string>
     <string name="message_setting_saved">New Settings Saved Successfully</string>
+  <string name="content_description_app_icon">Applciation Icon</string>
+  <string name="content_description_achievement_icon">Achievement icon</string>
+  <string name="content_description_card_image">Card Image</string>
+  <string name="content_description_no_history_icon">No Histoy Icon</string>
 </resources>

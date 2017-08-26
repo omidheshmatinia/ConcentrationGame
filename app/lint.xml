@@ -3,4 +3,9 @@
   <issue id="UnusedResources">
   <ignore path="**/material_color.xml" />
   </issue>
+  <issue id="IconLocation">
+    <ignore path="**/background_dashboard.jpg" />
+    <ignore path="**/icon_achievment.png" />
+    <ignore path="**/icon_think.png" />
+  </issue>
 </lint>

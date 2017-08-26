@@ -21,14 +21,17 @@ public class ScoreHistoryRepository <T extends ScoreHistory> {
 
     private DatabaseHelper mDbHelper;
     private ScoreHistoryRepository(){
-        mDbHelper = new DatabaseHelper(MasterApplication.getInstance());
+        mDbHelper = new DatabaseHelper(
+            MasterApplication.getInstance(),
+            (Class<T>)ScoreHistory.class
+        );
     }
 
     private static class Instance{
-        private final static ScoreHistoryRepository Item = new ScoreHistoryRepository();
+        private final static ScoreHistoryRepository<ScoreHistory> Item = new ScoreHistoryRepository<>();
     }
 
-    public static ScoreHistoryRepository getInstance(){
+    public static ScoreHistoryRepository<ScoreHistory> getInstance(){
         return Instance.Item;
     }
 
@@ -53,14 +56,15 @@ public class ScoreHistoryRepository <T extends ScoreHistory> {
     }
 
     private class DatabaseHelper extends MasterDatabase<T>{
-         DatabaseHelper(Context context) {
+
+         DatabaseHelper(Context context , Class<T> type) {
             super(context);
-            MODEL_CLASS = ScoreHistory.class;
+            MODEL_CLASS = type;
         }
 
         List<T> getAllHistoryForADifficultySortedByScore(int difficultyType){
             try{
-                Dao localDao=getDao(MODEL_CLASS);
+                Dao<T,Long> localDao=getDao(MODEL_CLASS);
                 return localDao.query(localDao.queryBuilder()
                         .orderBy(T.MILLI_SECONDS,true)
                         .where()
@@ -68,13 +72,13 @@ public class ScoreHistoryRepository <T extends ScoreHistory> {
                         .prepare());
             }catch (Exception ignore){
                 Log.d(MODEL_CLASS.getName(), ignore.getMessage());
-                return new ArrayList();
+                return new ArrayList<>();
             }
         }
 
         public T getLast() {
             try{
-                Dao localDao=getDao(MODEL_CLASS);
+                Dao<T,Long> localDao=getDao(MODEL_CLASS);
                 List<T> items =  localDao.query(localDao.queryBuilder()
                         .orderBy(T.ID,false)
                         .prepare());

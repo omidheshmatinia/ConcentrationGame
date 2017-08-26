@@ -24,8 +24,7 @@
         <activity
             android:label=""
             android:name=".activity.game.GameActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".activity.dashboard.DashboardActivity">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.dashboard.DashboardActivity" />
@@ -33,7 +32,6 @@
         <activity
             android:label=""
             android:name=".activity.highscores.HighScoreActivity"
-            android:parentActivityName=".activity.dashboard.DashboardActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
             >
@@ -45,7 +43,6 @@
             android:label=""
             android:name=".activity.setting.SettingActivity"
             android:windowSoftInputMode="stateHidden"
-            android:parentActivityName=".activity.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             >
             <meta-data
